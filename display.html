@@ -1,0 +1,45 @@
+<!-- display.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Data Summary - Albertson's</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>WELCOME TO ALBERTSON'S</header>
+  <main>
+    <div class="container">
+      <div class="data-item"><strong>Branch:</strong>      <span id="d_branch"></span></div>
+      <div class="data-item"><strong>Project:</strong>     <span id="d_project"></span></div>
+      <div class="data-item"><strong>Branch Code:</strong> <span id="d_code"></span></div>
+      <div class="data-item"><strong>QR Result:</strong>   <span id="d_qr"></span></div>
+      <div class="data-item"><strong>Latitude:</strong>    <span id="d_lat"></span></div>
+      <div class="data-item"><strong>Longitude:</strong>   <span id="d_lng"></span></div>
+      <div class="data-item"><strong>Scanned At:</strong>  <span id="d_time"></span></div>
+
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+  </main>
+  <footer>WELCOME TO ALBERTSON'S</footer>
+
+  <script>
+    const d = JSON.parse(sessionStorage.getItem('formData') || '{}');
+    document.getElementById('d_branch').textContent = d.branch || '-';
+    document.getElementById('d_project').textContent = d.project || '-';
+    document.getElementById('d_code').textContent   = d.code || '-';
+    document.getElementById('d_qr').textContent     = d.qr || '-';
+    document.getElementById('d_lat').textContent    = d.lat || '-';
+    document.getElementById('d_lng').textContent    = d.lng || '-';
+    document.getElementById('d_time').textContent   = d.timestamp
+      ? new Date(d.timestamp).toLocaleString()
+      : '-';
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.clear();
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>

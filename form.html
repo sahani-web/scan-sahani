@@ -1,0 +1,53 @@
+<!-- form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Form - Albertson's</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>WELCOME TO ALBERTSON'S</header>
+  <main>
+    <div class="container">
+      <form id="dataForm">
+        <select id="branch" required>
+          <option value="">Select AIPL Branch</option>
+          <option>Branch A</option>
+          <option>Branch B</option>
+          <option>Branch C</option>
+        </select>
+
+        <select id="project" required>
+          <option value="">Select Project</option>
+          <option>Project X</option>
+          <option>Project Y</option>
+          <option>Project Z</option>
+        </select>
+
+        <select id="branchCode" required>
+          <option value="">Select Branch Code</option>
+          <option>001</option>
+          <option>002</option>
+          <option>003</option>
+        </select>
+
+        <button type="button" id="scanBtn">Scan QR Code</button>
+        <div id="qr-scanner"></div>
+        <input type="hidden" id="qrResult">
+        <input type="hidden" id="scanTimestamp">
+
+        <input type="text" id="latitude"  placeholder="Latitude"  readonly>
+        <input type="text" id="longitude" placeholder="Longitude" readonly>
+
+        <button type="submit">Submit Data</button>
+      </form>
+    </div>
+  </main>
+  <footer>WELCOME TO ALBERTSON'S</footer>
+
+  <script src="https://unpkg.com/html5-qrcode@latest/html5-qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
