@@ -29,7 +29,26 @@
     document.getElementById('d_branch').textContent = d.branch || '-';
     document.getElementById('d_project').textContent = d.project || '-';
     document.getElementById('d_code').textContent   = d.code || '-';
-    document.getElementById('d_qr').textContent     = d.qr || '-';
+    // document.getElementById('d_qr').textContent     = d.qr || '-';
+    const qrEl = document.getElementById('d_qr');
+
+if (d.qr) {
+  try {
+    // parse the JSON
+    const obj = JSON.parse(d.qr);
+    // build one “key: value” string per line
+    const lines = Object.entries(obj)
+      .map(([key, val]) => `${key}: ${val}`);
+    // join with newline—and CSS white-space:pre-line will break them
+    qrEl.textContent = lines.join('\n');
+  } catch {
+    // if it wasn’t valid JSON, just dump the raw string
+    qrEl.textContent = d.qr;
+  }
+} else {
+  qrEl.textContent = '-';
+}
+
     document.getElementById('d_lat').textContent    = d.lat || '-';
     document.getElementById('d_lng').textContent    = d.lng || '-';
     document.getElementById('d_time').textContent   = d.timestamp
